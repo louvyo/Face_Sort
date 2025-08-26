@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Foto Sortir</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #181a1b;
+            color: #e0e0e0;
+        }
+        .main-header {
+            background: linear-gradient(90deg, #232526, #414345);
+            color: #ffd700;
+            padding: 28px 0 20px 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+        .main-header h2 {
+            font-weight: 700;
+        }
+        .card, .card-header, .bg-light {
+            background: #232526 !important;
+            color: #ffd700 !important;
+            border-bottom: 1px solid #333 !important;
+        }
+        .thumb-card {
+            background: #232526;
+            color: #e0e0e0;
+            border: 2px solid #ffd700;
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 16px rgba(255,215,0,0.10);
+            transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+        }
+        .thumb-card:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 32px 4px #ffd70099;
+            border-color: #ff9800;
+            z-index: 2;
+        }
+        .thumb-img {
+            width: 170px;
+            border-radius: 10px;
+            margin-bottom: 7px;
+            box-shadow: 0 1px 8px rgba(255,215,0,0.10);
+            transition: filter 0.18s;
+        }
+        .thumb-card:hover .thumb-img {
+            filter: brightness(1.05) drop-shadow(0 0 8px #ffd70088);
+        }
+        .thumb-overlay {
+            display: none;
+        }
+        .thumb-filename {
+            display: block;
+            color: #ffd700;
+            font-size: 0.97em;
+            background: none;
+            text-align: center;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            word-break: break-all;
+            font-family: 'Consolas', 'monospace', 'Arial';
+            letter-spacing: 0.5px;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 7px;
+            right: 7px;
+            z-index: 3;
+            background: #ff5252;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+            box-shadow: 0 2px 8px rgba(255,82,82,0.18);
+            opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+        .thumb-card:hover .delete-btn {
+            opacity: 1;
+        }
+        .loading {
+            display: none;
+            margin-top: 10px;
+        }
+        .section-title {
+            margin-top: 30px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: #ffd700;
+        }
+        .footer {
+            margin-top: 40px;
+            padding: 14px;
+            text-align: center;
+            color: #ffd700;
+            font-size: 0.95em;
+            background: #232526;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(255,215,0,0.08);
+        }
+        .btn-warning {
+            background: linear-gradient(90deg, #ffd700 0%, #ff9800 100%);
+            border: none;
+            color: #232526;
+            font-weight: 600;
+        }
+        .btn-warning:hover {
+            background: linear-gradient(90deg, #ff9800 0%, #ffd700 100%);
+            color: #232526;
+        }
+        .btn-primary, .btn-success {
+            color: #232526 !important;
+            font-weight: 600;
+        }
+        .btn-danger {
+            color: #fff !important;
+        }
+        .text-warning { color: #ffd700 !important; }
+        .text-danger { color: #ff5252 !important; }
+        .text-muted { color: #bdbdbd !important; }
+    </style>
+</head>
+<body class="container py-4">
+    <!-- Header -->
+    <div class="main-header text-center">
+        <h2 class="mb-1"><span style="font-size:1.5em;">📸</span> Foto Sortir <span style="font-size:0.7em;">(DeepFace)</span></h2>
+        <div style="font-size:1.1em;">Aplikasi sortir foto otomatis berbasis AI</div>
+    </div>
+
+    <!-- Warning block -->
+    {% if warning %}
+    <div class="alert alert-warning">{{ warning }}</div>
+    {% endif %}
+
+    <!-- Error block -->
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <!-- Upload Referensi -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-warning bg-gradient fw-bold">📂 Upload Foto Referensi</div>
+        <div class="card-body">
+            <form action="/upload_ref" method="post" enctype="multipart/form-data">
+                <label class="form-label">Nama orang:</label>
+                <input type="text" name="person_name" id="person_name_ref" required class="form-control mb-2">
+                <input type="file" name="files" multiple class="form-control mb-2">
+                <button type="submit" class="btn btn-primary">Upload Referensi</button>
+            </form>
+            <button type="button" class="btn btn-warning mt-2" data-bs-toggle="modal" data-bs-target="#cameraRefModal">
+                📷 Ambil Foto Referensi dari Kamera
+            </button>
+        </div>
+    </div>
+
+    <!-- Upload Foto Input -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-success bg-gradient text-white fw-bold">📥 Upload Foto Input</div>
+        <div class="card-body">
+            <form id="uploadInputForm" action="/upload_input" method="post" enctype="multipart/form-data">
+                <input type="file" name="files" multiple class="form-control mb-2">
+                <button type="submit" class="btn btn-success">Upload Input</button>
+            </form>
+            <div id="loadingInput" class="loading">
+                <span class="spinner-border spinner-border-sm"></span> Uploading...
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Kamera Referensi -->
+    <div class="modal fade" id="cameraRefModal" tabindex="-1" aria-labelledby="cameraRefModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cameraRefModalLabel">Ambil Foto Referensi dari Kamera</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <input type="text" id="person_name_camera" class="form-control mb-2" placeholder="Nama orang (wajib)">
+            <video id="videoRef" width="320" height="240" autoplay style="border-radius:10px; background:#222;"></video>
+            <canvas id="canvasRef" width="320" height="240" style="display:none;"></canvas>
+            <div class="mt-3">
+              <button id="captureRefBtn" class="btn btn-warning">📸 Ambil Foto</button>
+              <button id="uploadRefPhotoBtn" class="btn btn-success" style="display:none;">Upload Foto Referensi</button>
+            </div>
+            <div id="cameraRefStatus" class="mt-2 text-warning"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Foto Referensi -->
+    <h3 class="section-title">📂 Foto Referensi</h3>
+    {% if people %}
+        <div class="row">
+            {% for person, files in people.items() %}
+                <div class="col-md-4 col-sm-6 mb-3">
+                    <h5 class="mb-2 text-warning">{{ person }}</h5>
+                    <div class="d-flex flex-wrap justify-content-start">
+                        {% for f in files %}
+                            <div class="thumb-card p-2 me-2 mb-2">
+                                <img src="{{ url_for('serve_ref', person=person, filename=f) }}" class="thumb-img">
+                                <form action="{{ url_for('delete_ref', person=person, filename=f) }}" method="post" class="mt-2">
+                                    <button class="delete-btn" title="Hapus"><span>&#10006;</span></button>
+                                </form>
+                                <span class="thumb-filename">{{ f }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p><i>Belum ada foto referensi</i></p>
+    {% endif %}
+
+    <!-- Foto Input -->
+    <h3 class="section-title">📂 Foto Input</h3>
+    {% if input_files %}
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+            {% for f in input_files %}
+            <div class="col">
+                <div class="thumb-card p-2 text-center">
+                    <img src="{{ url_for('serve_input', filename=f) }}" class="thumb-img">
+                    <form action="{{ url_for('delete_input', filename=f) }}" method="post" class="mt-2">
+                        <button class="delete-btn" title="Hapus"><span>&#10006;</span></button>
+                    </form>
+                    <span class="thumb-filename">{{ f }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p><i>Belum ada foto input</i></p>
+    {% endif %}
+
+    <!-- Proses -->
+    <div class="card mt-4 shadow-sm">
+        <div class="card-header bg-light fw-bold">▶ Proses Sortir</div>
+        <div class="card-body">
+            <form id="processForm" action="/process" method="post">
+                <div class="row mb-2">
+                    <div class="col-md-4">
+                        <label for="model" class="form-label">Model DeepFace:</label>
+                        <select name="model" id="model" class="form-select">
+                            {% for m in model_list %}
+                                <option value="{{ m }}" {% if m == selected_model %}selected{% endif %}>{{ m }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="blur_threshold" class="form-label">Blur Threshold:</label>
+                        <input type="number" name="blur_threshold" id="blur_threshold" class="form-control"
+                            value="{{ blur_threshold }}" min="1" max="500">
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button type="submit" class="btn btn-warning w-100">▶ Proses Sortir</button>
+                    </div>
+                </div>
+            </form>
+            <div id="loadingProcess" class="loading">
+                <span class="spinner-border spinner-border-sm"></span> Memproses...
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        🤖 &copy; {{ 2025 }} Face Sortir AI — Powered by DeepFace & Flask
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.getElementById('processForm').addEventListener('submit', function() {
+        document.getElementById('loadingProcess').style.display = 'block';
+    });
+    document.getElementById('uploadInputForm').addEventListener('submit', function() {
+        document.getElementById('loadingInput').style.display = 'block';
+    });
+
+    // Kamera logic
+    let videoRef = document.getElementById('videoRef');
+    let canvasRef = document.getElementById('canvasRef');
+    let captureRefBtn = document.getElementById('captureRefBtn');
+    let uploadRefPhotoBtn = document.getElementById('uploadRefPhotoBtn');
+    let cameraRefStatus = document.getElementById('cameraRefStatus');
+    let streamRef = null;
+    let photoRefData = null;
+
+    document.getElementById('cameraRefModal').addEventListener('shown.bs.modal', function () {
+        cameraRefStatus.textContent = "";
+        uploadRefPhotoBtn.style.display = "none";
+        canvasRef.style.display = "none";
+        videoRef.style.display = "block";
+        captureRefBtn.disabled = false;
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(s) {
+                streamRef = s;
+                videoRef.srcObject = streamRef;
+            })
+            .catch(function(err) {
+                cameraRefStatus.textContent = "Tidak bisa mengakses kamera: " + err;
+            });
+    });
+
+    document.getElementById('cameraRefModal').addEventListener('hidden.bs.modal', function () {
+        if (streamRef) {
+            streamRef.getTracks().forEach(track => track.stop());
+        }
+        videoRef.srcObject = null;
+        canvasRef.style.display = "none";
+        uploadRefPhotoBtn.style.display = "none";
+        cameraRefStatus.textContent = "";
+        document.getElementById('person_name_camera').value = "";
+    });
+
+    captureRefBtn.onclick = function() {
+        canvasRef.getContext('2d').drawImage(videoRef, 0, 0, canvasRef.width, canvasRef.height);
+        photoRefData = canvasRef.toDataURL('image/jpeg');
+        canvasRef.style.display = "block";
+        videoRef.style.display = "none";
+        uploadRefPhotoBtn.style.display = "inline-block";
+        captureRefBtn.disabled = true;
+        cameraRefStatus.textContent = "Foto diambil. Klik Upload untuk mengirim.";
+    };
+
+    uploadRefPhotoBtn.onclick = function() {
+        let personName = document.getElementById('person_name_camera').value.trim();
+        if (!personName) {
+            cameraRefStatus.textContent = "Nama orang wajib diisi!";
+            return;
+        }
+        cameraRefStatus.textContent = "Mengupload...";
+        fetch("/upload_ref_camera", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ image: photoRefData, person_name: personName })
+        })
+        .then(r => r.json())
+        .then(data => {
+            cameraRefStatus.textContent = data.status === "ok" ? "Foto referensi berhasil diupload!" : "Gagal upload foto.";
+            setTimeout(() => {
+                var modal = bootstrap.Modal.getInstance(document.getElementById('cameraRefModal'));
+                modal.hide();
+                window.location.reload();
+            }, 1200);
+        })
+        .catch(() => {
+            cameraRefStatus.textContent = "Gagal upload foto.";
+        });
+    };
+    </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hasil Sortir</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: #181a1b;
+        color: #e0e0e0;
+      }
+      .header {
+        background: linear-gradient(90deg, #232526, #414345);
+        color: #ffd700;
+        padding: 30px;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        margin-bottom: 30px;
+      }
+      .header h2 {
+        font-weight: 700;
+      }
+      .stat-card {
+        background: #232526;
+        color: #ffd700;
+        border: none;
+        transition: transform 0.2s;
+      }
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 20px rgba(255, 215, 0, 0.08);
+      }
+      .thumb-card {
+        background: #232526;
+        color: #e0e0e0;
+        border: 1px solid #333;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .thumb-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 20px rgba(255, 215, 0, 0.12);
+        border-color: #ffd700;
+      }
+      .card-header,
+      .bg-light {
+        background: #232526 !important;
+        color: #ffd700 !important;
+        border-bottom: 1px solid #333 !important;
+      }
+      .badge.bg-dark {
+        background: #ffd700 !important;
+        color: #232526 !important;
+      }
+      .footer {
+        margin-top: 50px;
+        padding: 15px;
+        background: #232526;
+        border-radius: 12px;
+        text-align: center;
+        font-size: 0.95em;
+        color: #ffd700;
+        box-shadow: 0 2px 8px rgba(255, 215, 0, 0.08);
+      }
+      .btn-primary,
+      .btn-lg.btn-primary {
+        background: linear-gradient(90deg, #ffd700 0%, #ff9800 100%);
+        border: none;
+        color: #232526;
+        font-weight: 600;
+      }
+      .btn-outline-secondary {
+        color: #ffd700;
+        border-color: #ffd700;
+      }
+      .btn-outline-secondary:hover {
+        background: #ffd700;
+        color: #232526;
+      }
+      .text-warning {
+        color: #ffd700 !important;
+      }
+      .text-danger {
+        color: #ff5252 !important;
+      }
+      .text-secondary {
+        color: #bdbdbd !important;
+      }
+      .text-success {
+        color: #8bc34a !important;
+      }
+      .text-muted {
+        color: #bdbdbd !important;
+      }
+      .card-body.text-center.text-danger.fw-bold {
+        color: #ff5252 !important;
+      }
+    </style>
+  </head>
+  <body class="container py-4">
+    <!-- Header -->
+    <div class="header text-center">
+      <h2>📊 Hasil Sortir Foto</h2>
+      <p class="mb-0">Ringkasan sortir otomatis dengan AI</p>
+    </div>
+
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %} {% if counts %}
+    <!-- Ringkasan -->
+    <div class="row text-center mb-4">
+      <div class="col-md-3 col-6 mb-3">
+        <div class="card stat-card shadow-sm">
+          <div class="card-body">
+            <h4 class="text-warning">{{ counts.total }}</h4>
+            <p class="mb-0">Total Foto</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 mb-3">
+        <div class="card stat-card shadow-sm">
+          <div class="card-body">
+            <h4 class="text-danger">{{ counts.blur }}</h4>
+            <p class="mb-0">Blur</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 mb-3">
+        <div class="card stat-card shadow-sm">
+          <div class="card-body">
+            <h4 class="text-secondary">{{ counts.lainnya }}</h4>
+            <p class="mb-0">Lainnya</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-6 mb-3">
+        <div class="card stat-card shadow-sm">
+          <div class="card-body">
+            <h4 class="text-success">
+              {{ "%.2f"|format(sim_threshold|default(0.75)) }}
+            </h4>
+            <p class="mb-0">Similarity</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %} {% if per_person %}
+    <!-- Matched per orang (tampilkan thumbnail) -->
+    {% for person, _ in per_person.items() %}
+    <div class="card mb-4 shadow-sm">
+      <div
+        class="card-header bg-warning bg-gradient fw-bold d-flex align-items-center"
+        style="font-size: 1.15em"
+      >
+        <span style="font-size: 1.5em">👤</span>
+        <span class="ms-2">{{ person }}</span>
+        <span class="badge bg-dark ms-2">{{ per_person[person] }} foto</span>
+      </div>
+      <div class="card-body">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+          {% set seen_files = [] %} {% if review_data %} {% for item in
+          review_data %} {% for m in item.matches %} {% if m.person == person
+          and item.status == 'matched' and item.file not in seen_files %} {% set
+          _ = seen_files.append(item.file) %}
+          <div class="col">
+            <div class="card thumb-card">
+              <img
+                src="{{ url_for('serve_input', filename=item.file) }}"
+                class="card-img-top rounded"
+              />
+              <div class="card-body p-2 text-center">
+                <small class="text-muted"
+                  >Sim: {{ "%.2f"|format(m.similarity) }}</small
+                >
+                <div class="text-truncate" style="max-width: 120px">
+                  {{ item.file }}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %} {% endfor %} {% endfor %} {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% endif %}
+
+    <!-- Lainnya -->
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-light fw-bold">📁 Lainnya</div>
+      <div class="card-body">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+          {% if review_data %} {% for item in review_data %} {% if item.status
+          == 'lainnya' %}
+          <div class="col">
+            <div class="card thumb-card">
+              <img
+                src="{{ url_for('serve_input', filename=item.file) }}"
+                class="card-img-top rounded"
+              />
+              <div class="card-body p-2 text-center">
+                <small class="text-muted">Unmatched</small>
+                <div class="text-truncate" style="max-width: 120px">
+                  {{ item.file }}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %} {% endfor %} {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Blur -->
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header bg-light fw-bold">📷 Blur</div>
+      <div class="card-body">
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+          {% if review_data %} {% for item in review_data %} {% if item.status
+          == 'blur' %}
+          <div class="col">
+            <div class="card thumb-card">
+              <img
+                src="{{ url_for('serve_input', filename=item.file) }}"
+                class="card-img-top rounded"
+              />
+              <div class="card-body p-2 text-center text-danger fw-bold">
+                Blur
+              </div>
+            </div>
+          </div>
+          {% endif %} {% endfor %} {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Download & Back -->
+    <div class="text-center my-4">
+      <a href="/download_orang" class="btn btn-lg btn-primary me-2"
+        >📥 Download Zip Folder Orang</a
+      >
+      <a href="/download_lainnya" class="btn btn-lg btn-warning me-2"
+        >📥 Download Zip Folder Lainnya</a
+      >
+      <a href="/download" class="btn btn-lg btn-secondary me-2"
+        >📥 Download Zip Semua</a
+      >
+      <a href="/" class="btn btn-lg btn-outline-secondary">🏠 Kembali</a>
+    </div>
+
+    <div class="footer">
+      🤖 &copy; {{ 2025 }} Face Sortir AI — Powered by DeepFace & Flask
+    </div>
+  </body>
+</html>

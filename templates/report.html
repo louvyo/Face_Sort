@@ -1,0 +1,57 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hasil Sortir</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container py-4">
+    <h2>📊 Hasil Sortir</h2>
+
+    <p>
+        Total: {{ counts.total }} <br>
+        Blur: {{ counts.blur }} <br>
+        Lainnya: {{ counts.lainnya }} <br>
+        Threshold: {{ "%.3f"|format(thr) }}
+    </p>
+
+    <h4>Per Orang</h4>
+    <ul>
+        {% for name, n in per_person.items() %}
+        <li>{{ name }}: {{ n }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/download" class="btn btn-success">⬇ Download hasil sortir (ZIP)</a>
+    <a href="/" class="btn btn-secondary">⬅ Kembali</a>
+</body>
+</html>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hasil Sortir</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container py-4">
+    <h2>📊 Hasil Sortir</h2>
+
+    <p>
+        Total: {{ counts.total }} <br>
+        Blur: {{ counts.blur }} <br>
+        Lainnya: {{ counts.lainnya }} <br>
+        Threshold: {{ "%.3f"|format(thr) }}
+    </p>
+
+    <h4>Per Orang</h4>
+    <ul>
+        {% for name, n in per_person.items() %}
+        <li>{{ name }}: {{ n }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/download" class="btn btn-success">⬇ Download hasil sortir (ZIP)</a>
+    <a href="/" class="btn btn-secondary">⬅ Kembali</a>
+</body>
+</html>
+>>>>>>> 5c9d160 (prototipe_1)
