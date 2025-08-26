@@ -2005,3 +2005,110 @@
 2025-08-26 15:25:33,552 INFO 127.0.0.1 - - [26/Aug/2025 15:25:33] "[36mGET /foto_input/huda2.jpg HTTP/1.1[0m" 304 -
 2025-08-26 15:27:41,850 INFO  * Detected change in 'D:\\face_sortir_web\\app.py', reloading
 2025-08-26 15:27:42,471 INFO  * Restarting with stat
+2025-08-26 15:28:57,265 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://10.10.10.73:8080
+2025-08-26 15:28:57,266 INFO [33mPress CTRL+C to quit[0m
+2025-08-26 15:28:57,266 INFO  * Restarting with stat
+2025-08-26 15:28:59,789 WARNING  * Debugger is active!
+2025-08-26 15:28:59,790 INFO  * Debugger PIN: 144-241-402
+2025-08-26 15:28:59,824 INFO 127.0.0.1 - - [26/Aug/2025 15:28:59] "GET / HTTP/1.1" 200 -
+2025-08-26 15:29:00,116 INFO 127.0.0.1 - - [26/Aug/2025 15:29:00] "[36mGET /foto_input/DSC08217.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:00,118 INFO 127.0.0.1 - - [26/Aug/2025 15:29:00] "[36mGET /foto_input/huda2.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:00,123 INFO 127.0.0.1 - - [26/Aug/2025 15:29:00] "[36mGET /foto_referensi/fatur/DSC08242.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:00,125 INFO 127.0.0.1 - - [26/Aug/2025 15:29:00] "[36mGET /foto_input/huda1.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:00,125 INFO 127.0.0.1 - - [26/Aug/2025 15:29:00] "GET /foto_referensi/huda/huda1.jpg HTTP/1.1" 200 -
+2025-08-26 15:29:00,125 INFO 127.0.0.1 - - [26/Aug/2025 15:29:00] "GET /foto_input/DSC08242.jpg HTTP/1.1" 200 -
+2025-08-26 15:29:00,127 INFO 127.0.0.1 - - [26/Aug/2025 15:29:00] "[36mGET /foto_input/DSC08247.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:00,127 INFO 127.0.0.1 - - [26/Aug/2025 15:29:00] "[36mGET /foto_input/DSC08230.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:00,127 INFO 127.0.0.1 - - [26/Aug/2025 15:29:00] "[36mGET /foto_input/DSC08231.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:00,128 INFO 127.0.0.1 - - [26/Aug/2025 15:29:00] "GET /foto_referensi/huda/huda4.jpg HTTP/1.1" 200 -
+2025-08-26 15:29:17,652 INFO 127.0.0.1 - - [26/Aug/2025 15:29:17] "[32mPOST /delete_ref/fatur/DSC08242.jpg HTTP/1.1[0m" 302 -
+2025-08-26 15:29:17,656 INFO 127.0.0.1 - - [26/Aug/2025 15:29:17] "GET / HTTP/1.1" 200 -
+2025-08-26 15:29:17,687 INFO 127.0.0.1 - - [26/Aug/2025 15:29:17] "[36mGET /foto_referensi/huda/huda1.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:17,689 INFO 127.0.0.1 - - [26/Aug/2025 15:29:17] "[36mGET /foto_referensi/huda/huda4.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:17,691 INFO 127.0.0.1 - - [26/Aug/2025 15:29:17] "[36mGET /foto_input/DSC08217.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:17,693 INFO 127.0.0.1 - - [26/Aug/2025 15:29:17] "[36mGET /foto_input/DSC08230.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:17,694 INFO 127.0.0.1 - - [26/Aug/2025 15:29:17] "[36mGET /foto_input/DSC08231.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:17,695 INFO 127.0.0.1 - - [26/Aug/2025 15:29:17] "[36mGET /foto_input/DSC08242.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:17,695 INFO 127.0.0.1 - - [26/Aug/2025 15:29:17] "[36mGET /foto_input/DSC08247.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:17,697 INFO 127.0.0.1 - - [26/Aug/2025 15:29:17] "[36mGET /foto_input/huda1.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:17,697 INFO 127.0.0.1 - - [26/Aug/2025 15:29:17] "[36mGET /foto_input/huda2.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,012 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[32mPOST /delete_ref/huda/huda1.jpg HTTP/1.1[0m" 302 -
+2025-08-26 15:29:19,015 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "GET / HTTP/1.1" 200 -
+2025-08-26 15:29:19,047 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_referensi/huda/huda4.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,049 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/DSC08217.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,051 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/DSC08230.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,054 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/DSC08231.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,056 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/DSC08242.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,057 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/DSC08247.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,057 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/huda1.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,058 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/huda2.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,508 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[32mPOST /delete_ref/huda/huda4.jpg HTTP/1.1[0m" 302 -
+2025-08-26 15:29:19,512 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "GET / HTTP/1.1" 200 -
+2025-08-26 15:29:19,541 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/DSC08217.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,543 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/DSC08230.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,545 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/DSC08231.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,545 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/DSC08242.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,546 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/DSC08247.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,547 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/huda1.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:29:19,548 INFO 127.0.0.1 - - [26/Aug/2025 15:29:19] "[36mGET /foto_input/huda2.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:10,177 ERROR Processing error: Tidak ada foto referensi. Silakan upload foto referensi terlebih dahulu.
+2025-08-26 15:31:10,191 INFO 127.0.0.1 - - [26/Aug/2025 15:31:10] "POST /process HTTP/1.1" 200 -
+2025-08-26 15:31:13,816 INFO 127.0.0.1 - - [26/Aug/2025 15:31:13] "GET / HTTP/1.1" 200 -
+2025-08-26 15:31:13,844 INFO 127.0.0.1 - - [26/Aug/2025 15:31:13] "[36mGET /foto_input/DSC08217.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:13,846 INFO 127.0.0.1 - - [26/Aug/2025 15:31:13] "[36mGET /foto_input/DSC08230.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:13,847 INFO 127.0.0.1 - - [26/Aug/2025 15:31:13] "[36mGET /foto_input/DSC08231.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:13,848 INFO 127.0.0.1 - - [26/Aug/2025 15:31:13] "[36mGET /foto_input/DSC08242.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:13,849 INFO 127.0.0.1 - - [26/Aug/2025 15:31:13] "[36mGET /foto_input/DSC08247.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:13,850 INFO 127.0.0.1 - - [26/Aug/2025 15:31:13] "[36mGET /foto_input/huda1.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:13,850 INFO 127.0.0.1 - - [26/Aug/2025 15:31:13] "[36mGET /foto_input/huda2.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:22,193 INFO 127.0.0.1 - - [26/Aug/2025 15:31:22] "[32mPOST /upload_ref HTTP/1.1[0m" 302 -
+2025-08-26 15:31:22,196 INFO 127.0.0.1 - - [26/Aug/2025 15:31:22] "GET / HTTP/1.1" 200 -
+2025-08-26 15:31:22,229 INFO 127.0.0.1 - - [26/Aug/2025 15:31:22] "[36mGET /foto_input/DSC08217.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:22,231 INFO 127.0.0.1 - - [26/Aug/2025 15:31:22] "[36mGET /foto_input/DSC08230.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:22,232 INFO 127.0.0.1 - - [26/Aug/2025 15:31:22] "GET /foto_referensi/huda/DSC08242.jpg HTTP/1.1" 200 -
+2025-08-26 15:31:22,233 INFO 127.0.0.1 - - [26/Aug/2025 15:31:22] "[36mGET /foto_input/DSC08231.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:22,234 INFO 127.0.0.1 - - [26/Aug/2025 15:31:22] "[36mGET /foto_input/DSC08242.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:22,235 INFO 127.0.0.1 - - [26/Aug/2025 15:31:22] "[36mGET /foto_input/DSC08247.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:22,236 INFO 127.0.0.1 - - [26/Aug/2025 15:31:22] "[36mGET /foto_input/huda1.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:22,237 INFO 127.0.0.1 - - [26/Aug/2025 15:31:22] "[36mGET /foto_input/huda2.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:27,760 INFO Saved reference embeddings to cache.
+2025-08-26 15:31:35,410 INFO Sorting completed in 11.39s. Counts: {'total': 7, 'blur': 0, 'lainnya': 3}
+2025-08-26 15:31:35,455 INFO 127.0.0.1 - - [26/Aug/2025 15:31:35] "POST /process HTTP/1.1" 200 -
+2025-08-26 15:31:35,482 INFO 127.0.0.1 - - [26/Aug/2025 15:31:35] "[36mGET /foto_input/DSC08217.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:35,484 INFO 127.0.0.1 - - [26/Aug/2025 15:31:35] "[36mGET /foto_input/DSC08230.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:35,485 INFO 127.0.0.1 - - [26/Aug/2025 15:31:35] "[36mGET /foto_input/DSC08242.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:35,492 INFO 127.0.0.1 - - [26/Aug/2025 15:31:35] "[36mGET /foto_input/DSC08247.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:35,493 INFO 127.0.0.1 - - [26/Aug/2025 15:31:35] "[36mGET /foto_input/DSC08231.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:35,495 INFO 127.0.0.1 - - [26/Aug/2025 15:31:35] "[36mGET /foto_input/huda1.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:31:35,497 INFO 127.0.0.1 - - [26/Aug/2025 15:31:35] "[36mGET /foto_input/huda2.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:01,480 INFO 127.0.0.1 - - [26/Aug/2025 15:32:01] "GET / HTTP/1.1" 200 -
+2025-08-26 15:32:01,510 INFO 127.0.0.1 - - [26/Aug/2025 15:32:01] "[36mGET /foto_referensi/huda/DSC08242.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:01,512 INFO 127.0.0.1 - - [26/Aug/2025 15:32:01] "[36mGET /foto_input/DSC08217.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:01,514 INFO 127.0.0.1 - - [26/Aug/2025 15:32:01] "[36mGET /foto_input/DSC08230.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:01,516 INFO 127.0.0.1 - - [26/Aug/2025 15:32:01] "[36mGET /foto_input/DSC08231.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:01,517 INFO 127.0.0.1 - - [26/Aug/2025 15:32:01] "[36mGET /foto_input/DSC08242.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:01,518 INFO 127.0.0.1 - - [26/Aug/2025 15:32:01] "[36mGET /foto_input/DSC08247.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:01,520 INFO 127.0.0.1 - - [26/Aug/2025 15:32:01] "[36mGET /foto_input/huda1.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:01,520 INFO 127.0.0.1 - - [26/Aug/2025 15:32:01] "[36mGET /foto_input/huda2.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:57,052 INFO 127.0.0.1 - - [26/Aug/2025 15:32:57] "[32mPOST /delete_ref/huda/DSC08242.jpg HTTP/1.1[0m" 302 -
+2025-08-26 15:32:57,056 INFO 127.0.0.1 - - [26/Aug/2025 15:32:57] "GET / HTTP/1.1" 200 -
+2025-08-26 15:32:57,087 INFO 127.0.0.1 - - [26/Aug/2025 15:32:57] "[36mGET /foto_input/DSC08217.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:57,090 INFO 127.0.0.1 - - [26/Aug/2025 15:32:57] "[36mGET /foto_input/DSC08230.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:57,092 INFO 127.0.0.1 - - [26/Aug/2025 15:32:57] "[36mGET /foto_input/DSC08231.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:57,093 INFO 127.0.0.1 - - [26/Aug/2025 15:32:57] "[36mGET /foto_input/DSC08242.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:57,094 INFO 127.0.0.1 - - [26/Aug/2025 15:32:57] "[36mGET /foto_input/DSC08247.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:57,095 INFO 127.0.0.1 - - [26/Aug/2025 15:32:57] "[36mGET /foto_input/huda1.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:57,095 INFO 127.0.0.1 - - [26/Aug/2025 15:32:57] "[36mGET /foto_input/huda2.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:32:59,049 ERROR Processing error: Tidak ada foto referensi. Silakan upload foto referensi terlebih dahulu.
+2025-08-26 15:32:59,050 INFO 127.0.0.1 - - [26/Aug/2025 15:32:59] "POST /process HTTP/1.1" 200 -
+2025-08-26 15:33:02,940 INFO 127.0.0.1 - - [26/Aug/2025 15:33:02] "GET / HTTP/1.1" 200 -
+2025-08-26 15:33:02,970 INFO 127.0.0.1 - - [26/Aug/2025 15:33:02] "[36mGET /foto_input/DSC08217.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:33:02,972 INFO 127.0.0.1 - - [26/Aug/2025 15:33:02] "[36mGET /foto_input/DSC08230.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:33:02,973 INFO 127.0.0.1 - - [26/Aug/2025 15:33:02] "[36mGET /foto_input/DSC08231.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:33:02,974 INFO 127.0.0.1 - - [26/Aug/2025 15:33:02] "[36mGET /foto_input/DSC08242.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:33:02,975 INFO 127.0.0.1 - - [26/Aug/2025 15:33:02] "[36mGET /foto_input/DSC08247.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:33:02,975 INFO 127.0.0.1 - - [26/Aug/2025 15:33:02] "[36mGET /foto_input/huda1.jpg HTTP/1.1[0m" 304 -
+2025-08-26 15:33:02,976 INFO 127.0.0.1 - - [26/Aug/2025 15:33:02] "[36mGET /foto_input/huda2.jpg HTTP/1.1[0m" 304 -
